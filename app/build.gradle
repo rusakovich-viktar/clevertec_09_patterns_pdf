@@ -50,7 +50,7 @@ dependencies {
     implementation "org.aspectj:aspectjrt:${aspectjVersion}"
     implementation "org.aspectj:aspectjweaver:${aspectjVersion}"
     implementation 'org.apache.logging.log4j:log4j-api:2.14.1'
-    implementation 'org.apache.logging.log4j:log4j-core:2.14.1'
+    implementation 'org.apache.logging.log4j:log4j-core:2.17.1'
     implementation 'com.itextpdf:itextpdf:5.5.13.3'
 
 }

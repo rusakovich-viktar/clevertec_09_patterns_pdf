@@ -16,11 +16,11 @@ public class UserDocumentService implements DocumentService {
 
     @Override
     public void processDocument(PdfCanvas canvas) {
-        int yPosition = 560;
-        for (UserDto user : users) {
+        final int[] yPosition = {560};
+        users.forEach(user -> {
             String text = "ID: " + user.getId() + ", Имя: " + user.getName() + ", Email: " + user.getEmail() + ", Телефон: " + user.getPhoneNumber();
-            canvas.showTextAligned(Element.ALIGN_LEFT, new Phrase(text), 50, yPosition, 0);
-            yPosition -= 20;
-        }
+            canvas.showTextAligned(Element.ALIGN_LEFT, new Phrase(text), 50, yPosition[0], 0);
+            yPosition[0] -= 20;
+        });
     }
 }
