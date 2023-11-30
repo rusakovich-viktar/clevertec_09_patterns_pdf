@@ -1,8 +1,9 @@
 package by.clevertec.service;
 
-import com.itextpdf.text.DocumentException;
-import com.itextpdf.text.pdf.PdfContentByte;
+import by.clevertec.pdf.PdfCanvas;
 
 public interface DocumentService {
-    void processDocument(PdfContentByte canvas) throws DocumentException;
+    //    void processDocument(PdfContentByte canvas) throws DocumentException;
+    void processDocument(PdfCanvas canvas);
+
 }
