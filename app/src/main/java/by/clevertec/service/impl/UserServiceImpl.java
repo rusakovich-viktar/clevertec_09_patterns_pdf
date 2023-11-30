@@ -3,13 +3,11 @@ package by.clevertec.service.impl;
 import by.clevertec.dao.UserDao;
 import by.clevertec.dto.UserDto;
 import by.clevertec.entity.User;
-import by.clevertec.mapper.UserFactory;
 import by.clevertec.mapper.UserMapperMapStruct;
 import by.clevertec.proxy.annotation.Cacheable;
 import by.clevertec.service.UserService;
 import by.clevertec.validation.UserDtoValidator;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -38,7 +36,8 @@ public class UserServiceImpl implements UserService {
     @Override
     @Cacheable
     public UserDto getUser(int id) {
-        return Optional.ofNullable(userDao.get(id)).map(userMapper::convertToDto).orElse(null);
+        User user = userDao.get(id);
+        return user != null ? userMapper.convertToDto(user) : null;
     }
 
     /**
@@ -61,7 +60,7 @@ public class UserServiceImpl implements UserService {
     @Cacheable
     public void saveUser(UserDto userDto) {
         userDtoValidator.validate(userDto);
-        User user = UserFactory.createUser(userDto);
+        User user = userMapper.convertToEntity(userDto);
         userDao.save(user);
     }
 
