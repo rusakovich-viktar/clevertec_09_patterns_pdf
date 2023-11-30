@@ -4,6 +4,8 @@ import static by.clevertec.util.Constants.Paths.OUTPUT_PATH;
 import static by.clevertec.util.Constants.Paths.TEMPLATE_PDF;
 
 import by.clevertec.dto.UserDto;
+import by.clevertec.entity.User;
+import by.clevertec.entity.decorator.UserWithLogging;
 import by.clevertec.pdf.PdfCreator;
 import by.clevertec.service.DocumentService;
 import by.clevertec.service.impl.UserDocumentService;
@@ -24,5 +26,9 @@ public class Main {
         PdfCreator pdfCreator = new PdfCreator(OUTPUT_PATH);
         pdfCreator.createPdf(TEMPLATE_PDF, documentService);
 
+
+        User user = new UserWithLogging(new User());
+        user.setId(1);  // "Setting id" to log
+        user.getId();  // "Getting id" to log
     }
 }
