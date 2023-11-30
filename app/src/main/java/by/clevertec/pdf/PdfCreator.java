@@ -1,5 +1,6 @@
 package by.clevertec.pdf;
 
+import by.clevertec.pdf.impl.PdfCanvasImpl;
 import by.clevertec.service.DocumentService;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.pdf.PdfReader;
@@ -27,7 +28,10 @@ public class PdfCreator {
 
             PdfReader reader = new PdfReader(templatePath);
             PdfStamper stamper = new PdfStamper(reader, new FileOutputStream(filename));
-            documentService.processDocument(stamper.getOverContent(1));
+
+            PdfCanvas canvas = new PdfCanvasImpl(stamper.getOverContent(1));
+
+            documentService.processDocument(canvas);
             stamper.close();
             reader.close();
         } catch (IOException | DocumentException e) {
