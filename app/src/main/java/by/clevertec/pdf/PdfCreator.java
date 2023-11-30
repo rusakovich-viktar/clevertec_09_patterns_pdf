@@ -11,14 +11,28 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import lombok.extern.log4j.Log4j2;
 
+/**
+ * Создатель PDF, использующий шаблон и службу обработки документов.
+ */
 @Log4j2
 public class PdfCreator {
     private final String outputPath;
 
+    /**
+     * Конструктор класса PdfCreator.
+     *
+     * @param outputPath Путь для сохранения созданного PDF.
+     */
     public PdfCreator(String outputPath) {
         this.outputPath = outputPath;
     }
 
+    /**
+     * Создает PDF на основе заданного шаблона и службы обработки документов.
+     *
+     * @param templatePath    Путь к шаблону PDF.
+     * @param documentService Служба обработки документов.
+     */
     public void createPdf(String templatePath, DocumentService documentService) {
         try {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd_HHmmss");
