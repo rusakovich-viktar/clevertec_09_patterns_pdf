@@ -14,6 +14,7 @@ import java.util.List;
 
 public class Main {
 
+
     public static void main(String[] args) {
         List<UserDto> users = new ArrayList<>();
         users.add(new UserDto(1, "Пользователь 1", "user1@example.com", "+375291234567"));
